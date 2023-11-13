@@ -5,6 +5,7 @@ import Login from './components/pages/Login'
 import Register from './components/pages/Register'
 import ShelterAdmin from './components/pages/ShelterAdmin'
 import Adopt from './components/pages/Adopt'
+import ApplyToAdoption from './components/pages/ApplyToAdoption';
 import { isAuthenticated } from "./auth";
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
@@ -30,6 +31,7 @@ const Routes = () => (
         <Route exact path='/register' component={Register}/>
         <PrivateRoute exact path='/adm' component={ShelterAdmin} />
         <Route exact path='/adopt' component={Adopt} />
+        <Route exact path='/applyToAdoption' component={ApplyToAdoption} />
     </Switch>
 
 );
