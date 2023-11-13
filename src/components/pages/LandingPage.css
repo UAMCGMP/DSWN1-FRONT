@@ -1,0 +1,32 @@
+.titulo{
+    margin-top: 3rem;
+}
+.container {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.botao{
+    margin-top: 3rem;
+    text-decoration: none;
+    font-weight: bold;
+    color: white;
+    background-color: #f2ab27;
+    padding: 10px;
+    border-radius: 0.7rem;
+    width: 10rem;
+}
+.imagem{
+    margin-top: 3rem;
+    width: 130%;
+}
+.image-container{
+    display: flex;
+    gap: 5px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
