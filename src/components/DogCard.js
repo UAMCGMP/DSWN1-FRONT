@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import './DogCard.css'
 import { nomesDeCachorros, perfisCachorros } from './pages/utils/cardData'
-import { useNavigate } from "react-router-dom";
+
 
 function DogCard() {
     const [url, setUrl] = useState();
@@ -36,14 +36,14 @@ function DogCard() {
         getBio();
     }, []);
 
-    const navigate = useNavigate();
+    /*const navigate = useNavigate();
 
-    function handleClick() {
+     function handleClick() {
         navigate("/applyToAdopt");
-    }
+    } */
 
     return (
-        <div class="card" onClick={handleClick}>
+        <div class="card" /* onClick={handleClick} */>
             <img src={url} alt="uma imagem de um cachorro" />
             <div class="card__content">
                 <p class="card__title">{nome}</p>

@@ -32,6 +32,7 @@
     padding: 10px;
     border-radius: 0.7rem;
     width: 10rem;
+    cursor: pointer;
 }
 
 .titulo-login{
