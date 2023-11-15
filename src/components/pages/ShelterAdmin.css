@@ -1,0 +1,52 @@
+/* Adicione estas regras CSS ao seu arquivo de estilos */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  
+  thead th, tbody td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  thead th {
+    background-color: #f2f2f2;
+  }
+  
+  tbody input {
+    width: 100%;
+    padding: 6px;
+    box-sizing: border-box;
+  }
+  
+  tbody button {
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    padding: 8px;
+    cursor: pointer;
+  }
+
+.botao-editar{
+    background-color: #49af52;
+    color: #fff;
+    border: none;
+    padding: 8px;
+    cursor: pointer;
+  }
+  .botao-editar:hover {
+    background-color: #099643;
+  }
+  
+  tbody button:hover {
+    background-color: #c82333;
+  }
+  
+  /* Opcional: Adicione um estilo hover para destacar a linha selecionada */
+  tbody tr:hover {
+    background-color: #f5f5f5;
+  }
+  

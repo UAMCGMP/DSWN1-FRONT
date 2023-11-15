@@ -5,7 +5,7 @@ import axios from "axios";
 function ApplyToAdoption(props) {
     const [showDialog, setShowDialog] = useState(false);
     const petData = props.location.state.petData;
-   
+
     async function handleClick() {
         const nomeUsuario = document.querySelector("#name").value;
         const emaiUsuario = document.querySelector("#email").value;
@@ -20,18 +20,25 @@ function ApplyToAdoption(props) {
     }
 
     async function saveApplication(nomeUsuario, emaiUsuario, telefoneUsuario) {
-        axios.post('http://localhost:8080/adoptionApplication', {
-            "nomeUsuario": nomeUsuario,
-            "emailUsuario": emaiUsuario,
-            "telefoneUsuario": telefoneUsuario,
-            "idPet": petData.id,
-            "nomeDoPet": petData.name
-        })
+        axios.post('http://localhost:8080/adoptionApplication',
+            {
+                "nomeUsuario": nomeUsuario,
+                "emailUsuario": emaiUsuario,
+                "telefoneUsuario": telefoneUsuario,
+                "idPet": petData.id,
+                "nomeDoPet": petData.name
+            },
+            {
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem('token')}`
+                }
+            }
+        )
             .then(function () {
                 setShowDialog(true);
             })
             .catch(function (error) {
-                if(error.response.status == 403){
+                if (error.response.status == 403) {
                     alert("Você não possui permissão para realizar esse tipo de cadastro, você precisa ser um usuario comum, não adm!")
                 }
             });
