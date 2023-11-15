@@ -27,7 +27,13 @@ function Adopt() {
     return (
         <div className="container-cards">
             {pets.map((pet) => (
-                <Link to={`/pet/${pet.id}`} key={pet.id}>
+                <Link to=
+                {{
+                    pathname: `/pet/${pet.id}`, 
+                    state: { petData: pet }
+                }} 
+                key={pet.id}
+                petData = {pet}>
                     <DogCard
                         pet={pet}
                     />

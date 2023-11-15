@@ -31,7 +31,8 @@ const Routes = () => (
         <Route exact path='/register' component={Register}/>
         <PrivateRoute exact path='/adm' component={ShelterAdmin} />
         <Route exact path='/adopt' component={Adopt} />
-        <PrivateRoute path='/pet' component={ApplyToAdoption} />
+        <PrivateRoute exact path='/pet/:id' component={ApplyToAdoption} />
+        <PrivateRoute exact path='/adoptionApplication' component={ApplyToAdoption} />
     </Switch>
 
 );
