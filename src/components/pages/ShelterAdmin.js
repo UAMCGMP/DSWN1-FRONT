@@ -30,7 +30,7 @@ function ShelterAdmin() {
 
     const handleEditar = (id, name, age, size, weight, bio, gender, vaccinated, castration, photourl) => {
         if (id) {
-            axios.put(`http://localhost:8080/pets`,
+            axios.put(`https://dswn1-pawsome-app.onrender.com/pets`,
                 {
                     "id": id,
                     "name": name,
@@ -52,7 +52,7 @@ function ShelterAdmin() {
                 )
         }
         else{
-            axios.post(`http://localhost:8080/pets`,
+            axios.post(`https://dswn1-pawsome-app.onrender.com/pets`,
                 {
                     "name": name,
                     "age": age,
@@ -76,7 +76,7 @@ function ShelterAdmin() {
     };
 
     const handleExcluir = (id) => {
-        axios.delete(`http://localhost:8080/pets/${id}`, {
+        axios.delete(`https://dswn1-pawsome-app.onrender.com/pets/${id}`, {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('token')}`
             }

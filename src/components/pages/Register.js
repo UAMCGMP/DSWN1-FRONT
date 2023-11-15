@@ -24,7 +24,7 @@ function Register() {
     }
 
     async function doRegister(login, senha){
-        axios.post('http://localhost:8080/auth/register/user', {
+        axios.post('https://dswn1-pawsome-app.onrender.com/auth/register/user', {
             "login": login,
             "password": senha
           })

@@ -12,7 +12,7 @@ function Adopt() {
     useEffect(() => {
         async function getPets() {
 
-            await axios.get('http://localhost:8080/pets').then(
+            await axios.get('https://dswn1-pawsome-app.onrender.com/pets').then(
                 response => {
                     setPets(response.data)
                 }).catch(err => {

@@ -25,7 +25,7 @@ function Login() {
     }
 
     async function doLogin(login, senha){
-        axios.post('http://localhost:8080/auth/login', {
+        axios.post('https://dswn1-pawsome-app.onrender.com/auth/login', {
             "login": login,
             "password": senha
           })
