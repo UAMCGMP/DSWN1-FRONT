@@ -12,6 +12,7 @@ function ShelterAdmin() {
     }
 
     const [dados, setDados] = useState([]);
+    const [showBlankRow, setShowBlankRow] = useState(false);
 
     useEffect(() => {
         async function getPets() {
@@ -27,18 +28,82 @@ function ShelterAdmin() {
         getPets();
     }, [])
 
-    const handleEditar = (id, campo, valor) => {
-        // Atualiza o estado com os dados editados
-        const novosDados = dados.map((item) =>
-            item.id === id ? { ...item, [campo]: valor } : item
-        );
-        setDados(novosDados);
+    const handleEditar = (id, name, age, size, weight, bio, gender, vaccinated, castration, photourl) => {
+        if (id) {
+            axios.put(`http://localhost:8080/pets`,
+                {
+                    "id": id,
+                    "name": name,
+                    "age": age,
+                    "size": size,
+                    "weight": weight,
+                    "bio": bio,
+                    "gender": gender,
+                    "vaccinated": vaccinated,
+                    "castration": castration,
+                    "photourl": photourl
+                },
+                {
+                    headers: {
+                        Authorization: `Bearer ${localStorage.getItem('token')}`
+                    }
+                }).then(
+                    alert(`${id} editado com sucesso`)
+                )
+        }
+        else{
+            axios.post(`http://localhost:8080/pets`,
+                {
+                    "name": name,
+                    "age": age,
+                    "size": size,
+                    "weight": weight,
+                    "bio": bio,
+                    "gender": gender,
+                    "vaccinated": vaccinated,
+                    "castration": castration,
+                    "photourl": photourl
+                },
+                {
+                    headers: {
+                        Authorization: `Bearer ${localStorage.getItem('token')}`
+                    }
+                }).then(
+                    alert(`Item editado com sucesso`)
+                )
+
+        }
     };
 
     const handleExcluir = (id) => {
-        // Filtra os dados para excluir o item com o ID fornecido
-        const novosDados = dados.filter((item) => item.id !== id);
-        setDados(novosDados);
+        axios.delete(`http://localhost:8080/pets/${id}`, {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('token')}`
+            }
+        }).then(
+            alert(`${id} excluido com sucesso!`)
+        )
+    };
+
+    const handleInputChange = (id, field, value) => {
+        const updatedData = dados.map((item) => {
+            if (item.id === id) {
+                return {
+                    ...item,
+                    [field]: value,
+                };
+            }
+            return item;
+        });
+
+        setDados(updatedData);
+    };
+
+    const handleAddRow = () => {
+        // Adicionar uma nova linha em branco ao estado de dados
+        setDados([...dados, { id: '', name: '', age: '', size: '', weight: '', bio: '', gender: '', vaccinated: '', castration: '', photourl: '' }]);
+        // Exibir a nova linha em branco na tabela
+        setShowBlankRow(true);
     };
 
     return (
@@ -66,54 +131,64 @@ function ShelterAdmin() {
                                 <input
                                     type="text"
                                     value={item.name}
+                                    onChange={(e) => handleInputChange(item.id, 'name', e.target.value)}
                                 />
                             </td>
                             <td>
                                 <input
                                     type="text"
                                     value={item.age}
+                                    onChange={(e) => handleInputChange(item.id, 'age', e.target.value)}
+
                                 />
                             </td>
                             <td>
                                 <input
                                     type="text"
                                     value={item.size}
+                                    onChange={(e) => handleInputChange(item.id, 'size', e.target.value)}
                                 />
                             </td>
                             <td>
                                 <input
                                     type="text"
                                     value={item.weight}
+                                    onChange={(e) => handleInputChange(item.id, 'weight', e.target.value)}
                                 />
                             </td>
                             <td>
                                 <input
                                     type="text"
                                     value={item.bio}
+                                    onChange={(e) => handleInputChange(item.id, 'bio', e.target.value)}
                                 />
                             </td>
                             <td>
                                 <input
                                     type="text"
                                     value={item.gender}
+                                    onChange={(e) => handleInputChange(item.id, 'gender', e.target.value)}
                                 />
                             </td>
                             <td>
                                 <input
                                     type="text"
                                     value={item.vaccinated}
+                                    onChange={(e) => handleInputChange(item.id, 'vaccinated', e.target.value)}
                                 />
                             </td>
                             <td>
                                 <input
                                     type="text"
                                     value={item.castration}
+                                    onChange={(e) => handleInputChange(item.id, 'castration', e.target.value)}
                                 />
                             </td>
                             <td>
                                 <input
-                                    type="photourl"
-                                    value={item.valor}
+                                    type="text"
+                                    value={item.photourl}
+                                    onChange={(e) => handleInputChange(item.id, 'photourl', e.target.value)}
                                 />
                             </td>
                             <td>
@@ -122,7 +197,7 @@ function ShelterAdmin() {
                                 </button>
                             </td>
                             <td>
-                                <button className="botao-editar" onClick={() => handleEditar(item.id, 'valor')}>
+                                <button className="botao-editar" onClick={() => handleEditar(item.id, item.name, item.age, item.size, item.weight, item.bio, item.gender, item.vaccinated, item.castration, item.photourl)}>
                                     Editar
                                 </button>
                             </td>
@@ -130,9 +205,18 @@ function ShelterAdmin() {
                     ))}
                 </tbody>
             </table>
+
+            <FloatingButton onClick={handleAddRow} />
         </div>
+
 
     );
 }
+
+const FloatingButton = ({ onClick }) => (
+    <button className="floating-button" onClick={onClick}>
+        +
+    </button>
+);
 
 export default ShelterAdmin;
