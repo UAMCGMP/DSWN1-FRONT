@@ -78,12 +78,16 @@ function ShelterAdmin() {
                     }
                 })
                 .then(
-                    alert(`Item editado com sucesso`)
+                    alert(`Item adicionado com sucesso`)
                 )
                 .catch(function (error) {
                     if (error.response.status == 403) {
                         alert("Você não possui permissão para realizar esse tipo de cadastro, você precisa ser um adm!")
                     }
+                    if (error.response.status == 400) {
+                        alert("O abrigo não pode superar a capacidade de animais suportada, não será possivel adicioná-lo no momento!")
+                    }
+                    
                 })
 
         }
