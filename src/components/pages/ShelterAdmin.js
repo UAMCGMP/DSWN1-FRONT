@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { decodeToken } from '../../auth'
 import axios from "axios";
 import './ShelterAdmin.css'
+import app_url from '../../api'
+import { getNomeCachorros, getBioCachorros, getAge, getSize } from './utils/cardData'
 
 function ShelterAdmin() {
 
@@ -17,7 +19,7 @@ function ShelterAdmin() {
     useEffect(() => {
         async function getPets() {
 
-            await axios.get('http://localhost:8080/pets').then(
+            await axios.get(`${app_url}/pets`).then(
                 response => {
                     setDados(response.data)
                 }).catch(err => {
@@ -30,7 +32,7 @@ function ShelterAdmin() {
 
     const handleEditar = (id, name, age, size, weight, bio, gender, vaccinated, castration, photourl) => {
         if (id) {
-            axios.put(`https://dswn1-pawsome-app.onrender.com/pets`,
+            axios.put(`${app_url}/pets`,
                 {
                     "id": id,
                     "name": name,
@@ -47,12 +49,18 @@ function ShelterAdmin() {
                     headers: {
                         Authorization: `Bearer ${localStorage.getItem('token')}`
                     }
-                }).then(
+                })
+                .then(
                     alert(`${id} editado com sucesso`)
                 )
+                .catch(function (error) {
+                    if (error.response.status == 403) {
+                        alert("Você não possui permissão para realizar esse tipo de cadastro, você precisa ser um adm")
+                    }
+                })
         }
-        else{
-            axios.post(`https://dswn1-pawsome-app.onrender.com/pets`,
+        else {
+            axios.post(`${app_url}/pets`,
                 {
                     "name": name,
                     "age": age,
@@ -68,21 +76,32 @@ function ShelterAdmin() {
                     headers: {
                         Authorization: `Bearer ${localStorage.getItem('token')}`
                     }
-                }).then(
+                })
+                .then(
                     alert(`Item editado com sucesso`)
                 )
+                .catch(function (error) {
+                    if (error.response.status == 403) {
+                        alert("Você não possui permissão para realizar esse tipo de cadastro, você precisa ser um adm!")
+                    }
+                })
 
         }
     };
 
     const handleExcluir = (id) => {
-        axios.delete(`https://dswn1-pawsome-app.onrender.com/pets/${id}`, {
+        axios.delete(`${app_url}/pets/${id}`, {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('token')}`
             }
         }).then(
             alert(`${id} excluido com sucesso!`)
         )
+            .catch(function (error) {
+                if (error.response.status == 403) {
+                    alert("Você não possui permissão para realizar esse tipo de cadastro, você precisa ser um adm!")
+                }
+            })
     };
 
     const handleInputChange = (id, field, value) => {
@@ -99,9 +118,14 @@ function ShelterAdmin() {
         setDados(updatedData);
     };
 
-    const handleAddRow = () => {
+    const handleAddRow = async () => {
+        const nome = getNomeCachorros()
+        const idade = getAge()
+        const tamanho = getSize()
+        const bio = getBioCachorros()
+        const photo = await axios.get('https://dog.ceo/api/breeds/image/random');
         // Adicionar uma nova linha em branco ao estado de dados
-        setDados([...dados, { id: '', name: '', age: '', size: '', weight: '', bio: '', gender: '', vaccinated: '', castration: '', photourl: '' }]);
+        setDados([...dados, { id: '', name: nome, age: idade, size: tamanho, weight: idade, bio: bio, gender: Math.round(Math.random()) == 0 ? 'Macho' : 'Femea', vaccinated: Math.round(Math.random()) == 0 ? 'Y' : 'N', castration: Math.round(Math.random()) == 0 ? 'Y' : 'N', photourl: photo.data.message }]);
         // Exibir a nova linha em branco na tabela
         setShowBlankRow(true);
     };

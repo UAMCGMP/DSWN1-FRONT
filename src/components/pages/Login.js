@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import './Login.css'
 import axios from "axios";
 import { Redirect } from 'react-router-dom'
+import app_url from '../../api'
 
 function Login() {
     const [redirect, setRedirect] = useState(false);
@@ -25,7 +26,7 @@ function Login() {
     }
 
     async function doLogin(login, senha){
-        axios.post('https://dswn1-pawsome-app.onrender.com/auth/login', {
+        axios.post(`${app_url}/auth/login`, {
             "login": login,
             "password": senha
           })

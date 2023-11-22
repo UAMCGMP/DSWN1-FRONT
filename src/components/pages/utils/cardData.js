@@ -1,4 +1,6 @@
-export const nomesDeCachorros = [
+import axios from "axios";
+
+const nomesDeCachorros = [
   'Buddy',
   'Daisy',
   'Rocky',
@@ -50,8 +52,12 @@ export const nomesDeCachorros = [
   'Olive',
 ];
 
+export function getNomeCachorros(){
+  return nomesDeCachorros[Math.floor(Math.random() * (nomesDeCachorros.length-1 + 1))]
+}
 
-export const perfisCachorros = [
+
+const bioCachorros = [
   "Olá, sou um cachorro amigável e brincalhão que adora correr no parque e fazer novos amigos.",
   "Oi, sou uma cachorra adorável que ama receber carinho e está sempre pronta para um passeio descontraído.",
   "E aí, galera? Sou um cachorro leal e protetor. Adoro brincar de buscar e fazer longas caminhadas.",
@@ -64,6 +70,28 @@ export const perfisCachorros = [
   "Oi, pessoal! Aqui é um cachorro super carismático que adora fazer amigos e está sempre em busca de novas aventuras.",
 ];
 
+export function getBioCachorros(){
+  return bioCachorros[Math.floor(Math.random() * (bioCachorros.length-1 + 1))]
+}
 
+
+
+export async function getphotosCachorros() {
+   axios.get('https://dog.ceo/api/breeds/image/random').then(
+    response => {
+      return response.data.message
+    }).catch(err => {
+      return 'https://images.dog.ceo/breeds/malamute/n02110063_13228.jpg'
+    })
+}
+
+export function getAge(){
+  return Math.floor(Math.random() * (10 + 1))
+}
+
+export function getSize(){
+  const sizes = ["small", "medium", "large"]
+  return sizes[ Math.floor(Math.random() * (sizes.length-1 + 1))]
+}
 
 

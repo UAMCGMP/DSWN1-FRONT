@@ -3,6 +3,7 @@ import DogCard from "../DogCard";
 import { Link } from "react-router-dom";
 import './Adopt.css'
 import axios from "axios";
+import app_url from '../../api'
 
 
 function Adopt() {
@@ -12,7 +13,7 @@ function Adopt() {
     useEffect(() => {
         async function getPets() {
 
-            await axios.get('https://dswn1-pawsome-app.onrender.com/pets').then(
+            await axios.get(`${app_url}/pets`).then(
                 response => {
                     setPets(response.data)
                 }).catch(err => {

@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import axios from "axios";
 import { Redirect } from 'react-router-dom'
+import app_url from '../../api'
 
 function Register() {
     const [redirect, setRedirect] = useState(false);
@@ -24,7 +25,7 @@ function Register() {
     }
 
     async function doRegister(login, senha){
-        axios.post('https://dswn1-pawsome-app.onrender.com/auth/register/user', {
+        axios.post(`${app_url}/auth/register/user`, {
             "login": login,
             "password": senha
           })

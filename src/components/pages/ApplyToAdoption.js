@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./ApplyToAdoption.css"
 import axios from "axios";
+import app_url from '../../api'
 
 function ApplyToAdoption(props) {
     const [showDialog, setShowDialog] = useState(false);
@@ -20,7 +21,7 @@ function ApplyToAdoption(props) {
     }
 
     async function saveApplication(nomeUsuario, emaiUsuario, telefoneUsuario) {
-        axios.post('https://dswn1-pawsome-app.onrender.com/adoptionApplication',
+        axios.post(`${app_url}/adoptionApplication`,
             {
                 "nomeUsuario": nomeUsuario,
                 "emailUsuario": emaiUsuario,
