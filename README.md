@@ -1,70 +1,55 @@
-# Getting Started with Create React App
+# DSWN1-FRONT 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Bem-vindo ao repositório DSWN1-FRONT! Este é o front-end do projeto desenvolvido como parte do curso de Desenvolvimento de Software para a Web (DSWN1). 
 
-## Available Scripts
+## Sobre o Projeto
 
-In the project directory, you can run:
+O DSWN1-FRONT é a interface do usuário para um sistema web desenvolvido em React. Este projeto faz parte de um curso acadêmico que visa fornecer uma compreensão aprofundada do desenvolvimento de software para a web e conceitos relacionados a redes neurais.
 
-### `npm start`
+## Configuração do Ambiente
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Antes de começar, certifique-se de ter o Node.js instalado em sua máquina. Você pode baixá-lo em [nodejs.org](https://nodejs.org/).
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+1. Clone este repositório usando o comando:
 
-### `npm test`
+```bash
+git clone https://github.com/UAMCGMP/DSWN1-FRONT.git
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+2. Navegue até o diretório do projeto:
 
-### `npm run build`
+```bash
+cd DSWN1-FRONT
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+3. Instale as dependências:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```bash
+npm install
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Executando o Projeto
 
-### `npm run eject`
+Após a configuração do ambiente, você pode iniciar o projeto. Utilize o seguinte comando:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```bash
+npm start
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Este comando iniciará o servidor de desenvolvimento e abrirá o aplicativo em seu navegador padrão. Agora você pode visualizar e interagir com o projeto.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## O que esta sendo utilizado
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+O projeto está hospedado no link abaixo: 
 
-## Learn More
+https://dswn1-fron.onrender.com
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+O backend está hospedado no link abaixo: 
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+https://github.com/UAMCGMP/DSWN1BACKUP e deve ser rodado em conjunto pois contém toda a logica de utilização
 
-### Code Splitting
+## Licença
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Este projeto está licenciado sob a licença [MIT](LICENSE.md) - veja o arquivo LICENSE.md para obter detalhes.
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Agradecemos por usar o DSWN1-FRONT! Esperamos que este projeto seja útil para você no aprendizado e desenvolvimento de software para a web.
